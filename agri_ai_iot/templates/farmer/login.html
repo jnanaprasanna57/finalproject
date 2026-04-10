@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+
+        <!-- Top Navigation Links -->
+        <div class="text-end mb-3">
+            <a href="/" class="btn btn-outline-secondary btn-sm">🏠 Home</a>
+            <a href="{% url 'farmer_register' %}" class="btn btn-outline-success btn-sm">📝 Register</a>
+            <a href="{% url 'admin_login' %}" class="btn btn-outline-dark btn-sm">🔐 Admin Login</a>
+        </div>
+
+        <div class="card shadow">
+            <div class="card-header bg-success text-white text-center">
+                <h4>🌾 Farmer Login</h4>
+            </div>
+
+            <div class="card-body">
+
+                {% if error %}
+                <div class="alert alert-danger">
+                    {{ error }}
+                </div>
+                {% endif %}
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-control" placeholder="Enter Email" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Enter Password" required>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success">
+                            Login
+                        </button>
+                    </div>
+
+                </form>
+
+                <hr>
+
+                <div class="text-center">
+                    New Farmer? 
+                    <a href="{% url 'farmer_register' %}">
+                        Register Here
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

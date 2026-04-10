@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row">
+<div class="col-md-9">
+
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            📊 Admin Dashboard
+        </div>
+
+        <div class="card-body">
+
+            <h5>AI Model Management</h5>
+            <p>
+                Click the button below to train and evaluate all machine learning algorithms 
+                on the latest dataset.
+            </p>
+
+            <a href="{% url 'algorithm_results' %}" 
+               class="btn btn-success btn-lg">
+               ▶️ Run Algorithms
+            </a>
+
+            <hr>
+
+            <p class="text-muted">
+                This will train:
+                <br>• Random Forest
+                <br>• Decision Tree
+                <br>• KNN
+                <br>• Logistic Regression
+            </p>
+
+        </div>
+    </div>
+
+</div>
+    <!-- Sidebar -->
+    <div class="col-md-3">
+        <div class="card shadow">
+            <div class="card-header bg-dark text-white">
+                🔐 Admin Menu
+            </div>
+
+            <div class="list-group list-group-flush">
+
+                <a href="{% url 'admin_dashboard' %}" 
+                   class="list-group-item list-group-item-action active">
+                    🏠 Dashboard
+                </a>
+
+                <a href="{% url 'view_farmers' %}" 
+                   class="list-group-item list-group-item-action">
+                    👨‍🌾 View Farmers
+                </a>
+
+                <a href="{% url 'view_sensor' %}" 
+                   class="list-group-item list-group-item-action">
+                    📊 View Sensor Data
+                </a>
+
+                <a href="{% url 'feature_importance' %}" 
+                   class="list-group-item list-group-item-action">
+                    📈 AI Analytics
+                </a>
+
+                <a href="{% url 'admin_logout' %}" 
+                   class="list-group-item list-group-item-action text-danger">
+                    🚪 Logout
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-9">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                📊 Admin Dashboard
+            </div>
+
+            <div class="card-body">
+                <p>Welcome to Admin Panel.</p>
+                <p>Use the left menu to manage farmers, sensor data, and AI analytics.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

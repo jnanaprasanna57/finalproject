@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row">
+
+    <!-- Sidebar -->
+    <div class="col-md-3">
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                🌾 Farmer Menu
+            </div>
+            <div class="list-group list-group-flush">
+
+                <a href="{% url 'farmer_dashboard' %}" 
+                   class="list-group-item list-group-item-action">
+                    🏠 Dashboard
+                </a>
+
+                <a href="{% url 'add_sensor' %}" 
+                   class="list-group-item list-group-item-action">
+                    ➕ Add Sensor Data
+                </a>
+
+                <a href="{% url 'view_prediction' %}" 
+                   class="list-group-item list-group-item-action">
+                    📊 View Predictions
+                </a>
+
+                <a href="{% url 'feature_importance' %}" 
+                   class="list-group-item list-group-item-action active">
+                    📈 View Analytics
+                </a>
+
+               
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-9">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                📈 AI Feature Importance Analysis
+            </div>
+
+            <div class="card-body text-center">
+
+                <p class="mb-3">
+                    This graph shows the importance of each agricultural parameter 
+                    in predicting crop yield using Random Forest.
+                </p>
+
+                <img src="data:image/png;base64,{{ graph }}" 
+                     class="img-fluid rounded">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

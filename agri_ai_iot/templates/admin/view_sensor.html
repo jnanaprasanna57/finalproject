@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row">
+
+    <!-- Sidebar -->
+    <div class="col-md-3">
+        <div class="card shadow">
+            <div class="card-header bg-dark text-white">
+                🔐 Admin Menu
+            </div>
+
+            <div class="list-group list-group-flush">
+
+                <a href="{% url 'admin_dashboard' %}" 
+                   class="list-group-item list-group-item-action">
+                    🏠 Dashboard
+                </a>
+
+                <a href="{% url 'view_farmers' %}" 
+                   class="list-group-item list-group-item-action">
+                    👨‍🌾 View Farmers
+                </a>
+
+                <a href="{% url 'view_sensor' %}" 
+                   class="list-group-item list-group-item-action active">
+                    📊 View Sensor Data
+                </a>
+
+                <a href="{% url 'feature_importance' %}" 
+                   class="list-group-item list-group-item-action">
+                    📈 AI Analytics
+                </a>
+
+                <a href="{% url 'admin_logout' %}" 
+                   class="list-group-item list-group-item-action text-danger">
+                    🚪 Logout
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-9">
+
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                📊 Sensor Data Records
+            </div>
+
+            <div class="card-body">
+
+                <table class="table table-bordered table-striped table-sm">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Farmer</th>
+                            <th>Soil Moisture</th>
+                            <th>Temperature</th>
+                            <th>Humidity</th>
+                            <th>N</th>
+                            <th>P</th>
+                            <th>K</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for d in data %}
+                        <tr>
+                            <td>{{ d.id }}</td>
+                            <td>{{ d.farmer.name }}</td>
+                            <td>{{ d.soil_moisture }}</td>
+                            <td>{{ d.temperature }}</td>
+                            <td>{{ d.humidity }}</td>
+                            <td>{{ d.nitrogen }}</td>
+                            <td>{{ d.phosphorus }}</td>
+                            <td>{{ d.potassium }}</td>
+                            <td>{{ d.created_at }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="9" class="text-center">
+                                No sensor data available
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

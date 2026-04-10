@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row">
+
+    <!-- Left Side Navigation -->
+    <div class="col-md-3">
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                🌾 Farmer Menu
+            </div>
+            <div class="list-group list-group-flush">
+
+                <a href="{% url 'add_sensor' %}" 
+                   class="list-group-item list-group-item-action">
+                    ➕ Add Sensor Data
+                </a>
+
+                <a href="{% url 'view_prediction' %}" 
+                   class="list-group-item list-group-item-action">
+                    📊 View Predictions
+                </a>
+
+                <a href="{% url 'feature_importance' %}" 
+                   class="list-group-item list-group-item-action">
+                    📈 View Analytics
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Side Content -->
+    <div class="col-md-9">
+
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                📊 Soil Moisture Trend
+            </div>
+            <div class="card-body text-center">
+                <img src="data:image/png;base64,{{ graph }}" class="img-fluid">
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

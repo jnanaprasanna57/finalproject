@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row">
+
+    <!-- Sidebar -->
+    <div class="col-md-3">
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                🌾 Farmer Menu
+            </div>
+            <div class="list-group list-group-flush">
+
+                <a href="{% url 'farmer_dashboard' %}" 
+                   class="list-group-item list-group-item-action">
+                    🏠 Dashboard
+                </a>
+
+                <a href="{% url 'add_sensor' %}" 
+                   class="list-group-item list-group-item-action">
+                    ➕ Add Sensor Data
+                </a>
+
+                <a href="{% url 'view_prediction' %}" 
+                   class="list-group-item list-group-item-action active">
+                    📊 View Predictions
+                </a>
+
+                <a href="{% url 'feature_importance' %}" 
+                   class="list-group-item list-group-item-action">
+                    📈 View Analytics
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-9">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                📊 Prediction Results
+            </div>
+
+            <div class="card-body">
+
+                <table class="table table-bordered table-striped">
+                    <thead class="table-success">
+                        <tr>
+                            <th>Date</th>
+                            <th>Irrigation</th>
+                            <th>Fertilizer</th>
+                            <th>Yield Prediction</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in predictions %}
+                        <tr>
+                            <td>{{ p.created_at }}</td>
+                            <td>{{ p.irrigation_required }}</td>
+                            <td>{{ p.fertilizer_recommendation }}</td>
+                            <td>{{ p.yield_prediction }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4" class="text-center">
+                                No predictions available
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

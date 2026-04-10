@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row">
+
+    <!-- Sidebar -->
+    <div class="col-md-3">
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                🌾 Farmer Menu
+            </div>
+            <div class="list-group list-group-flush">
+
+                <a href="{% url 'farmer_dashboard' %}" 
+                   class="list-group-item list-group-item-action">
+                    🏠 Dashboard
+                </a>
+
+                <a href="{% url 'add_sensor' %}" 
+                   class="list-group-item list-group-item-action active">
+                    ➕ Add Sensor Data
+                </a>
+
+                <a href="{% url 'view_prediction' %}" 
+                   class="list-group-item list-group-item-action">
+                    📊 View Predictions
+                </a>
+
+                <a href="{% url 'feature_importance' %}" 
+                   class="list-group-item list-group-item-action">
+                    📈 View Analytics
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-9">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                ➕ Enter Sensor Data
+            </div>
+
+            <div class="card-body">
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Soil Moisture</label>
+                            <input type="number" name="soil_moisture" class="form-control" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>Temperature (°C)</label>
+                            <input type="number" name="temperature" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label>Humidity (%)</label>
+                            <input type="number" name="humidity" class="form-control" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>Nitrogen (N)</label>
+                            <input type="number" name="nitrogen" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label>Phosphorus (P)</label>
+                            <input type="number" name="phosphorus" class="form-control" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>Potassium (K)</label>
+                            <input type="number" name="potassium" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="mt-3 text-end">
+                        <button type="submit" class="btn btn-success">
+                            Submit Data
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

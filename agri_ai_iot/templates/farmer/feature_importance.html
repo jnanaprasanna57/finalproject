@@ -1,0 +1,69 @@
+<!-- {% extends 'base.html' %}
+{% block content %}
+
+<h3>AI Feature Importance</h3>
+<img src="data:image/png;base64,{{ graph }}" class="img-fluid">
+
+{% endblock %} -->
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+
+```
+<!-- Sidebar -->
+<div class="col-md-3">
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            🌾 Farmer Menu
+        </div>
+
+        <div class="list-group list-group-flush">
+            <a href="/" class="list-group-item list-group-item-action">
+                🏠 Dashboard
+            </a>
+
+            <a href="/core/add-sensor/" 
+               class="list-group-item list-group-item-action">
+                ➕ Add Sensor Data
+            </a>
+
+            <a href="/core/prediction/" 
+               class="list-group-item list-group-item-action">
+                📊 View Predictions
+            </a>
+
+            <a href="/core/feature-importance/" 
+               class="list-group-item list-group-item-action active">
+                📈 View Analytics
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Graph Section -->
+<div class="col-md-9">
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+            📈 Feature Importance Analysis
+        </div>
+
+        <div class="card-body text-center">
+
+            <img src="data:image/png;base64,{{ graph }}" 
+                 class="img-fluid" 
+                 alt="Feature Importance Graph">
+
+        </div>
+
+    </div>
+</div>
+```
+
+</div>
+
+{% endblock %}
